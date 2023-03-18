@@ -20,10 +20,10 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", routes.HomeHandler)
 	r.HandleFunc("/users", routes.GetUsersHandler).Methods("GET")
+	r.HandleFunc("/users", routes.PostUserHandler).Methods("POST")
 	r.HandleFunc("/users/{id}", routes.GetUserByIdHandler).Methods("GET")
 	r.HandleFunc("/users/{id}", routes.UpateUserHandler).Methods("PUT")
-	r.HandleFunc("/users", routes.PostUserHandler).Methods("POST")
-	r.HandleFunc("/users", routes.DeleteUserHandler).Methods("DELETE")
+	r.HandleFunc("/users/{id}", routes.DeleteUserHandler).Methods("DELETE")
 
 	http.ListenAndServe(":3000", r)
 }
